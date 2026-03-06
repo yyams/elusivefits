@@ -1,0 +1,975 @@
+/* ====================BASIC UNIVERSAL STYLING & CLEAN UP======================= */
+
+/* div outlines */
+div {
+    outline:#d33571;
+    outline-width: 2px;
+}
+
+
+/* loading fonts */   
+@font-face {
+    font-family: "greatwarrior";
+    src: url("../fonts/Greatwarrior.ttf"); 
+    /* Dibaca, Mohon. 2023. “Great Warrior”. Letterara. https://www.dafont.com/great-warrior.font?text=NECTAR+nectar&back=theme */
+}
+
+
+/* some basic css resetting */
+body { 
+    margin: 0; 
+    box-sizing: border-box; 
+    z-index: 5;
+}
+  
+a { text-decoration: none; color: var(--lightcream); }
+  
+  
+ul {
+    margin: 0;
+    padding: 0; 
+    list-style: none;
+}
+  
+/* ==================== NAVIGATION ======================= */
+nav {
+    position: sticky;
+    z-index: 20;
+    animation: navanimate linear;
+    animation-timeline: scroll();
+    padding: 0;
+    width: min(1080px, 98vw);
+    margin: 0 auto;
+    aspect-ratio: 1080 / 160;
+    background-image: url("../images/desktopNavwhite.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.navbg {
+    position:absolute;
+    height:calc(var(--sectionheight)*0.05);
+    width:100%;
+    background-color: #0a050f;
+  }
+
+#burger, label {
+    display:none;
+}
+
+nav ul {
+    display: flex;
+    gap: 10px;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 0;
+    background-color: transparent;
+    height: 100%;
+    align-items: center;
+}
+
+nav ul li {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li a {
+    color: var(--black);
+    padding: 8px 0;
+    border-radius: 5px;
+    flex: 1 1 auto;
+    text-align: center;
+    z-index: 20;
+    transition-duration: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--red);
+}
+  
+@keyframes navanimate {
+    8% {
+      top:0px;
+    }
+    100% {
+      top:0px;
+    }
+}
+
+
+/* ==================== MAIN BODY CONTENT ======================= */
+
+:root { /* allows me to access these variables through out the whole document */
+    --sectionheight: 1152px; /* calc(768px*1.5) */
+    /* 
+      becuase the animation scrolling is based on percentages of the body height I decided to base the section on a specific variable
+      originally it was because I thought that I couldnt use the vh in transforms (which was a problem for the parallax) but I found out afterwards that you can and
+      in hindsight if I based the whole website on viewheight it would have done the same thing.
+    */
+    /* update from elusive james, this is fully outdated and should def remove using a section height asap */
+  
+    /* colour palette */
+    --red: #990525; /* accent color */
+    --lightcream: #ebf1e9; /* off white #f7eee9 */
+    --black: #181a19; /* off black */
+  
+    --darkgreen25: #506b6252;       /* color-mix(in srgb, var(--darkgreen),#0000 25%); /* mixes colour to make it transparent */
+    --lightblue100:  #95d4c900;     /*color-mix(in srgb, var(--lightblue), #0000 100%);*/
+}
+
+.display {
+    font-family: "Helvetica";
+    font-weight: bold;
+    font-size: large;
+}
+
+body {
+    background-color: #0a050f;
+}
+
+p {
+    font-family: "neulis-neue", "helvetica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+    color: white;
+}
+
+a {
+    font-family: "neulis-neue", "helvetica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* ==================== HEADER ======================= */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "helvetica";
+    font-weight: bold;
+}
+
+/* ==================== ANIMATION ======================= */
+
+/* #region ==================== text bobbing ======================= */
+
+@keyframes textbob { /* this is for the TITLE animation */
+    0% {
+      transform: translateY(7px);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+    100% {
+      transform: translateY(7px);
+    }
+}
+
+@keyframes textbobhover {
+    0% {
+      transform: translateY(7px);
+    }
+    100% {
+      transform: translateY(-28px);
+    }
+}
+
+
+.textbob {
+    counter-reset: child-counter;
+}
+
+.textbob span {
+    counter-increment: child-counter;
+    transform: translateY(7px); /* had to ajust starting position because the animation started at 7px it was jumping at the start */
+    animation: textbob 4s infinite cubic-bezier(0.6, 0, 0.7, 1); /* the inspect tool is useful to ajust this curve */
+}
+/* Animation delays for each span */
+/* #region for Animation Delays */
+/* omg this is so useful */
+.textbob span:nth-child(1) {
+    animation-delay: 0s; /* I found out about the delay after I made 2 different keyframes for the waves */
+}
+  
+.textbob span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+  
+.textbob span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+  
+.textbob span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+  
+.textbob span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+  
+.textbob span:nth-child(6) {
+    animation-delay: 1s;
+}
+  
+.textbob span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+  
+.textbob span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+  
+.textbob span:nth-child(9) {
+    animation-delay: 1.6s;
+}
+  
+.textbob span:nth-child(10) {
+    animation-delay: 1.8s;
+}
+
+.textbob span:nth-child(11) {
+    animation-delay: 2s;
+}
+
+.textbob span:nth-child(12) {
+    animation-delay: 2.2s;
+}
+
+.textbob span:nth-child(13) {
+    animation-delay: 2.4s;
+}
+
+.textbob span:nth-child(14) {
+    animation-delay: 2.6s;
+}
+
+.textbob span:nth-child(15) {
+    animation-delay: 2.8s;
+}
+
+.textbob span:nth-child(16) {
+    animation-delay: 3s;
+}
+
+.textbob span:nth-child(17) {
+    animation-delay: 3.2s;
+}
+
+.textbob span:nth-child(18) {
+    animation-delay: 3.4s; /* I feel like this should be illegal, why cant I make a function to do this without using extra software */
+}
+/* #endregion */
+/* #endregion */
+
+@keyframes grain {
+  0%   { background-position: 0% 0%; }
+  10%  { background-position: -5% -10%; }
+  20%  { background-position: -15% 5%; }
+  30%  { background-position: 7% -25%; }
+  40%  { background-position: -5% 25%; }
+  50%  { background-position: -15% 10%; }
+  60%  { background-position: 15% 0%; }
+  70%  { background-position: 0% 15%; }
+  80%  { background-position: 3% 35%; }
+  90%  { background-position: -10% 10%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* #region ==================== SECTION HOME STYLING ==================== */
+#home {
+  display:flex;
+  text-align: center;
+  position: relative;
+  height: calc((100vh - 110px));
+  background-color: transparent;
+}
+
+#home h1 span {
+  display: flex;
+  align-items: center;
+  transition: translate 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* smooth return */
+}
+
+/* Hovered letter springs up */
+#home h1 span:hover {
+  translate: 0 -28px;
+  transition: translate 0.35s cubic-bezier(0.2, 0, 0, 1.6); /* springy launch */
+}
+
+/* Ripple: adjacent letters (±1) */
+#home h1 span:hover + span,
+#home h1 span:has(+ span:hover) {
+  translate: 0 -14px;
+  transition: translate 0.4s 0.05s cubic-bezier(0.2, 0, 0, 1.4);
+}
+
+/* Ripple: 2nd neighbours (±2) */
+#home h1 span:hover + span + span,
+#home h1 span:has(+ span + span:hover) {
+  translate: 0 -6px;
+  transition: translate 0.45s 0.1s cubic-bezier(0.2, 0, 0, 1.3);
+}
+
+#home h1 span img {
+  height: 16vw;
+  width: auto;
+  display: block;
+}
+
+#home h1 {
+  font-size: 18vw;
+  font-weight: bold;
+  position:absolute;
+  top: 0;
+  left:50%;
+  transform: translateX(-50%) translateZ(-1px);
+  color: white;
+  z-index: 3;
+  display: flex;
+  flex-wrap: nowrap;
+}
+/* image-hero hidden — Artboard 2 is now the fixed body background */
+.image-hero {
+  display: none;
+}
+
+/* Home section email signup */
+.home-signup {
+  position: absolute;
+  top: calc(16vw + 300px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(680px, 86vw);
+  aspect-ratio: 1080 / 251.87;
+  background-image: url("../images/SignUpwhite.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 3;
+}
+
+/* red SVG overlay — masked to bottom button shape only, shown on button hover */
+.home-signup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--red);
+  -webkit-mask-image: url("../images/SignUpwhite.svg");
+  mask-image: url("../images/SignUpwhite.svg");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  clip-path: inset(57% 33% 3% 33%);
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.home-signup:has(button:hover)::before {
+  opacity: 1;
+}
+
+.home-signup form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* sits over the top shape — centered at ~27.5% which is the shape's vertical midpoint */
+.home-signup input[type="email"] {
+  position: absolute;
+  top: 15%;
+  left: 17%;
+  width: 66%;
+  height: 24%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "neulis-neue", "helvetica", sans-serif;
+  font-size: clamp(10px, 2vw, 16px);
+  color: #0a050f;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.home-signup input[type="email"]::placeholder {
+  color: #0a050f;
+  opacity: 0.6;
+}
+
+.home-signup input[type="email"]:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* sits over the bottom shape — centered at ~77% which is the shape's vertical midpoint */
+.home-signup button {
+  position: absolute;
+  top: 64%;
+  left: 35%;
+  width: 30%;
+  height: 26%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "neulis-neue", "helvetica", sans-serif;
+  font-weight: 700;
+  font-size: clamp(8px, 1.4vw, 14px);
+  color: #0a050f;
+  transition: color 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-signup button:hover {
+  color: white;
+}
+
+/* Artboard 2 scroll animation — shrinks to top-right as you scroll */
+.artboard1-scroll {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  right: 100px;
+  top: 0;
+  width: 70vw;
+  transform-origin: top right;
+  animation: artboard1move linear;
+  animation-timeline: scroll();
+}
+
+.artboard1-scroll img {
+  width: 150%;
+  height: auto;
+  display: block;
+}
+
+@keyframes artboard1move {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+}
+
+
+
+
+/* Grain overlay */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-image: url("../images/noise.png");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.25;
+  animation: grain 1s steps(12) infinite;
+}
+
+
+/* #endregion */
+
+/* #region ==================== SHOP - SECTION 2 STYLING ======================= */
+#shop {
+    display:flex;
+    flex-direction: column;
+    position:relative;
+    min-height: 105vh;
+    top:0px;
+    z-index: 3;
+    margin: 0px auto 10vh auto;
+}
+  
+h2 {
+    text-align:center;
+    font-size:6vh;
+    padding:100px;
+    margin-top:-1px;
+    z-index: 4;
+    color: white;
+    /* background: linear-gradient(to top, transparent 50%, #d33571 90%, var(--red) 100%); */
+}
+
+.shoplist { /* lists of garments */
+    width:45%;
+    margin:0px auto;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-left: 15%;
+}
+
+.shopsignup { /* email sign up */
+    width:45%;
+    margin:0px auto;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-left: 15%;
+}
+
+/* shop text styling */
+a.garmenttitle {
+    display:flex;
+    font-size: medium;
+    line-height: 2;
+    cursor: pointer; /* shows that you intereacted with something. It was hard to see the animation if you didnt know it was there*/
+}
+  
+  
+  
+a.garmenttitle p { /* body text */
+    flex: 1 1 300px;
+    font-weight: lighter;
+    text-align: left;
+    margin:0px;
+}
+  
+a.garmenttitle span { /* bold body text */
+    flex: 1 1 150px;
+    font-family: "greatwarrior";
+    font-weight: bold;
+    text-align: right;
+    margin:0px;
+    margin-top: -6px;
+}
+
+
+/* email signup form */
+.emailsignup {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.emailsignup input[type="email"] {
+    flex: 1 1 auto;
+    padding: 14px 18px;
+    font-family: "neulis-neue", "helvetica", sans-serif;
+    font-size: medium;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+
+.emailsignup input[type="email"]::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.emailsignup input[type="email"]:focus {
+    border-color: var(--red);
+}
+
+.emailsignup button {
+    padding: 14px 24px;
+    font-family: "neulis-neue", "helvetica", sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    background-color: white;
+    color: #0a050f;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.emailsignup button:hover {
+    background-color: var(--red);
+    border-color: var(--red);
+    color: white;
+}
+
+.emailsignup-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 24px;
+    font-family: "neulis-neue", "helvetica", sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.emailsignup-btn:hover {
+    background-color: var(--red);
+    border-color: var(--red);
+    color: white;
+}
+/* #endregion */
+
+/* #region ==================== ABOUT US - SECTION 3 STYLING======================= */
+#aboutus {
+    scroll-margin-top: 100px;
+    flex-direction: column;
+    position:relative;
+    min-height: 105vh;
+    top:0px;
+    z-index: 3;
+}
+  
+h3 {
+    text-align:center;
+    font-size:6vh;
+    margin-top:0px;
+    z-index: 4;
+    color: white;
+}
+
+#aboutus p {
+    position:relative;
+    width: 60%;
+    margin: 10vh auto 10vh auto;
+    text-align: left;
+    color: white;
+}
+/* #endregion */
+
+/* #region ====================FOOTER STYLIING======================= */
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: calc(var(--sectionheight)*0.5);
+    position:relative;
+    z-index: 3;
+    background-color: var(--black);
+    padding: 0px 10%;
+}
+  
+footer p, footer a {
+    color: var(--lightcream);
+    font-size: xx-small;
+}
+  
+p.footertitle {
+    flex: 1 6 40%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: nowrap;
+    font-size: 12vw;
+    margin: 10% 5px 5px 5px;
+    font-weight: bold;
+    height: 10vw;
+}
+  
+p.footertitle span {
+    flex: 1 1 10%;
+    flex-direction: row;
+}
+
+.socials, .footernav {
+    flex: 1 1 50px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    padding:5px;
+    height: 10vw;
+    margin:10% 5px 5px 5px;
+    letter-spacing: .2rem;
+}
+
+.footernav a {
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.socials a {
+    flex: 1 1 auto;
+    text-align: right;
+}
+
+.copyright {
+    flex: 1 1 100%;
+    font-size:xx-small;
+    text-align: center;
+    padding:5px;
+}
+
+.footerspacer {
+    flex: 1 10 100%;
+    height:10vh;
+}
+
+.footcover {
+    position: absolute;
+    height:50px;
+    width: 100%;
+    background-color: var(--black);
+    bottom:-49px;
+    left:0px;
+}
+/* #endregion */
+
+/* ====================RESPONSIVE DESIGN======================= */
+/* ===== 5K RETINA MAC LABS: Media queries for Curtin Uni mac lab testing only ===== */
+@media only screen and (min-width: 5120px) {
+  
+        
+}
+
+/* ===== DESKTOP HD: Media queries for most HD desktops ===== */
+@media only screen and (min-width: 1920px) {
+  :root { /* allows me to access these variables through out the whole document */
+    --sectionheight: 1536px; /* calc(768px*2) */
+}
+    
+    
+}
+
+/* ===== SMALL DESKTOP: Media queries for laptop/small desktop ===== */
+@media only screen and (min-width: 1366px) { /* desktop for assignment 1366px x 768px */
+
+        
+}
+
+/* ===== TABLET: Media queries for verticle and horizontal ===== */
+@media only screen and (max-width: 1024px) {  /* tablet for assignment 1024px x 768px */
+
+  
+}
+
+@media only screen and (max-width: 768px) {
+/* reformatting for burger menu */
+
+    /* vertical h1 on left side */
+    #home h1 {
+        flex-direction: column;
+        top: 0;
+        left: 8vw;
+        transform: translateZ(-1px);
+        align-items: flex-start;
+    }
+
+    #home h1 span img {
+        height: calc((80vh) / 7);
+    }
+
+    h2 {
+        background: none;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: black;
+        background-color: transparent;
+        background-image: url("../images/Navwhite.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 360px;
+        aspect-ratio: 1080 / 160;
+        padding: 0;
+        border-radius: 0;
+        cursor: pointer;
+    }
+
+    nav {
+        position: fixed;
+        top: auto;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 360px;
+        margin: 0;
+        background-image: none;
+        aspect-ratio: unset;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position:absolute;
+        padding-left: 0%;
+        padding-right: 0%;
+        border-radius: 5px;
+        bottom: 200px;
+        left: 50%;
+        width: 360px;
+        transform: translate(-50%, 600%);
+        transition: ease 1s; /* added transition for the nav so that It animates onto the screen*/
+    }
+    
+    nav input:checked ~ ul { /* when the menu symbol in the nav is checked THE ELEMENTS THAT PROCEDES IT is ul */
+        gap:10px;
+        left:50%;
+        width: 360px;
+        transform: translate(-50%, -7vh);
+    }
+    
+    nav ul li {
+        display: flex;
+        width:360px;
+    }
+
+    nav ul li a {
+        background-image: url("../images/Navwhite.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 360px;
+        aspect-ratio: 1080 / 160;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        border-radius: 0;
+        padding: 0;
+        position: relative;
+        isolation: isolate;
+        transition: color 0.3s;
+    }
+
+    nav ul li a::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--red);
+        -webkit-mask-image: url("../images/Navwhite.svg");
+        mask-image: url("../images/Navwhite.svg");
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+    }
+
+    nav ul li a:hover {
+        background-color: transparent;
+        color: white;
+    }
+
+    nav ul li a:hover::before {
+        opacity: 1;
+    }
+       
+    @keyframes navanimate {
+        0% {bottom: 0px}
+        /* this looks weird but it removes the keyframes so that the nav stays at the bottom for the mobile version
+        in the desktop version the nav goes to the top of the page but for mobile its more convenient to stay at the bottom */
+    }
+}
+
+/* ===== MOBILE: Media queries for small mobile resolution. ===== */
+@media only screen and (max-width: 640px) { 
+    :root {
+      --sectionheight: 1536px; /* calc(768px*2) */
+    }
+      
+    /* shop section */
+    .garmentlist {
+      gap: 30px;
+    }
+  
+    .garmentlist a {
+      background-color: var(--lightcream);
+      border-radius: 5px;
+      padding:5px;
+    }
+  
+    /* about us section */
+    #aboutus p {
+      width: 80%;
+      font-size:large;
+    }
+  
+    /* footer section */
+    footer {
+      padding: 0px 5%;
+      
+    }
+    p.footertitle {
+      margin: 5px;
+    }
+  
+    footer p, footer a, .copyright {
+      color: var(--lightcream);
+      font-size: small;
+    }
+  
+    .socials, .footernav {
+      flex: 1 1 40%;
+      height: calc((var(--sectionheight)*0.2));
+      padding:5px;
+      margin:10% 5px 5px 5px;
+    }
+  
+    .footernav    {order:1;}
+    .socials      {order:2;}
+    .footertitle  {order:3;}
+    .copyright    {order:4;}
+    .footerspacer {order:5;}
+          
+}
+
+@media only screen and (max-width: 360px) { /* moblie for assignment 360px x 640px */
+
+    :root { /* allows me to access these variables through out the whole document */
+      --sectionheight: 1536px; /* calc(768px*2) */
+    }
+    
+    /* about us section */
+    #flavours p {
+      width: 80%;
+      line-height: 1.2;
+    }
+  
+    #flavours p.bgflavour {
+      font-weight: bold;
+    }
+    
+  
+    /* shop text styling */
+    .garmentlist {
+      margin-left: 5%;
+    }
+    a.garmenttitle {
+      display:flex;
+      font-size: large;
+      line-height: 1;
+      flex-direction: column;
+    }
+  
+  
+  
+    a.garmenttitle p {
+      flex: 1 1 auto;
+      margin:0px;
+    }
+  
+    a.garmenttitle span {
+      flex: 1 1 auto;
+      font-weight: bold;
+      text-align: left;
+      margin:0px;
+      margin-top: 0px;
+    }      
+  
+  
+          
+}
