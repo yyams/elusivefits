@@ -124,6 +124,7 @@ nav ul li a:hover {
     font-family: "Helvetica";
     font-weight: bold;
     font-size: large;
+    max-width: 1000px;
 }
 
 body {
@@ -519,7 +520,8 @@ h2 {
 }
 
 .shopsignup { /* email sign up */
-    width:45%;
+    width: 90%;
+    max-width: 1000px;
     margin:0px auto;
     display: flex;
     flex-direction: column;
@@ -641,7 +643,8 @@ h3 {
 
 #aboutus p {
     position:relative;
-    width: 60%;
+    width: 90%;
+    max-width: 1000px;
     margin: 10vh auto 10vh auto;
     text-align: left;
     color: white;
@@ -894,8 +897,7 @@ p.footertitle span {
   
     /* about us section */
     #aboutus p {
-      width: 80%;
-      font-size:large;
+      width: 90%;
     }
   
     /* footer section */
