@@ -14,8 +14,24 @@
         <link rel="icon" href="images/white logo 2.jpg">
         
         <!--loading fonts from adobe-->
-        <link rel="stylesheet" href="https://use.typekit.net/gfl8umr.css">
+        <link rel=”stylesheet” href=”https://use.typekit.net/gfl8umr.css”>
         <!-- Ladd, Adam. 2024. “Neulis Neue”. Adobe Fonts. https://fonts.adobe.com/fonts/neulis-neue -->
+
+        <!--Sender.net universal tracking script-->
+        <script>
+            (function (s, e, n, d, er) {
+                s['Sender'] = er;
+                s[er] = s[er] || function () {
+                    (s[er].q = s[er].q || []).push(arguments)
+                }, s[er].l = 1 * new Date();
+                var a = e.createElement(n),
+                    m = e.getElementsByTagName(n)[0];
+                a.async = 1;
+                a.src = d;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+            sender('b27f3606931245')
+        </script>
     </head>
     <body>
 
@@ -38,10 +54,7 @@
             </div>
 
             <div class="home-signup">
-                <form action="#" method="post">
-                    <input id="email-signup" type="email" name="email" placeholder="your email address" required>
-                    <button type="submit">notify me</button>
-                </form>
+                <div id="email-signup" class="sender-form-field" data-sender-form-id="aKrVxM"></div>
             </div>
         </section>
 
@@ -134,5 +147,6 @@
             <div class="footerspacer"></div>
             <div class="footcover"></div><!-- for some reason when I upload my file it creates a gap at the bottom of the page. I tried reuploading it but it only appears in the uploaded site-->
         </footer>
+
     </body>
 </html>

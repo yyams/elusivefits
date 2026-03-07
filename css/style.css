@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Home section email signup */
 .home-signup {
   position: absolute;
-  top: calc(16vw + 300px);
+  top: calc(16vw + 250px);
   left: 50%;
   transform: translateX(-50%);
   width: min(680px, 86vw);
@@ -378,6 +378,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   z-index: 2;
+}
+
+/* Sender.net form container — fills the .home-signup area */
+.home-signup .sender-form-field,
+.home-signup .sender-form-field > * {
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* sits over the top shape — centered at ~27.5% which is the shape's vertical midpoint */
@@ -771,6 +784,10 @@ p.footertitle span {
 
     #home h1 span img {
         height: calc((80vh) / 7);
+    }
+
+    .home-signup {
+        top: calc(70vh);
     }
 
     h2 {
