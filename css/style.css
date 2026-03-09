@@ -336,115 +336,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/* Home section email signup */
-.home-signup {
-  position: absolute;
-  top: calc(16vw + 250px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(680px, 86vw);
-  aspect-ratio: 1080 / 251.87;
-  background-image: url("../images/SignUpwhite.svg");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 3;
-}
 
-/* red SVG overlay — masked to bottom button shape only, shown on button hover */
-.home-signup::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--red);
-  -webkit-mask-image: url("../images/SignUpwhite.svg");
-  mask-image: url("../images/SignUpwhite.svg");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  clip-path: inset(57% 33% 3% 33%);
-  opacity: 0;
-  transition: opacity 0.25s;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.home-signup:has(button:hover)::before {
-  opacity: 1;
-}
-
-.home-signup form {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-/* Sender.net form container — fills the .home-signup area */
-.home-signup .sender-form-field,
-.home-signup .sender-form-field > * {
-  position: static !important;
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* sits over the top shape — centered at ~27.5% which is the shape's vertical midpoint */
-.home-signup input[type="email"] {
-  position: absolute;
-  top: 15%;
-  left: 17%;
-  width: 66%;
-  height: 24%;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-family: "neulis-neue", "helvetica", sans-serif;
-  font-size: clamp(10px, 2vw, 16px);
-  color: #0a050f;
-  text-align: center;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-.home-signup input[type="email"]::placeholder {
-  color: #0a050f;
-  opacity: 0.6;
-}
-
-.home-signup input[type="email"]:focus {
-  outline: 2px solid var(--red);
-  outline-offset: 2px;
-}
-
-/* sits over the bottom shape — centered at ~77% which is the shape's vertical midpoint */
-.home-signup button {
-  position: absolute;
-  top: 64%;
-  left: 35%;
-  width: 30%;
-  height: 26%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: "neulis-neue", "helvetica", sans-serif;
-  font-weight: 700;
-  font-size: clamp(8px, 1.4vw, 14px);
-  color: #0a050f;
-  transition: color 0.25s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home-signup button:hover {
-  color: white;
-}
 
 /* Artboard 2 scroll animation — shrinks to top-right as you scroll */
 .artboard1-scroll {
@@ -566,6 +458,37 @@ a.garmenttitle span { /* bold body text */
     text-align: right;
     margin:0px;
     margin-top: -6px;
+}
+
+/* Home section notify button */
+.home-notify {
+  position: absolute;
+  top: calc(16vw + 180px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+/* Shop section sender form */
+.home-signup {
+  position: relative;
+  width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 220px;
+  background-image: url("../images/sendernetoverlay.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-margin-top: 30vh;
+}
+
+.home-signup .sender-form-field {
+  width: 100%;
 }
 
 
@@ -773,6 +696,11 @@ p.footertitle span {
 @media only screen and (max-width: 768px) {
 /* reformatting for burger menu */
 
+    #home {
+        height: auto;
+        min-height: 140vh;
+    }
+
     /* vertical h1 on left side */
     #home h1 {
         flex-direction: column;
@@ -786,8 +714,8 @@ p.footertitle span {
         height: calc((80vh) / 7);
     }
 
-    .home-signup {
-        top: calc(70vh);
+    .home-notify {
+        top: calc(50vh);
     }
 
     h2 {
