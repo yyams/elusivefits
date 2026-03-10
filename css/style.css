@@ -130,10 +130,12 @@ nav ul li a:hover {
 
 html {
     background-color: #0a050f; /* fills notch and bottom bar safe areas on iOS */
+    overscroll-behavior: none; /* prevents bounce revealing white on iOS */
 }
 
 body {
     background-color: #0a050f;
+    overscroll-behavior: none;
 }
 
 p {
@@ -384,10 +386,7 @@ h1, h2, h3, h4, h5, h6 {
 .grain {
   pointer-events: none;
   position: fixed;
-  top: calc(-1 * env(safe-area-inset-top, 0px));
-  left: 0;
-  width: 100vw;
-  height: calc(100vh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+  inset: 0; /* pins all 4 edges to screen including safe areas with viewport-fit=cover */
   z-index: 9999;
   background-image: url("../images/noise.png");
   background-repeat: repeat;
