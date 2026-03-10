@@ -54,7 +54,7 @@
             </div>
 
             <div class="home-notify">
-                <a href="#email-signup" class="emailsignup-btn">notify me</a>
+                <a href="#email-signup" class="emailsignup-btn">join the drop list</a>
             </div>
 
         </section>
@@ -155,5 +155,12 @@
             <div class="footcover"></div><!-- for some reason when I upload my file it creates a gap at the bottom of the page. I tried reuploading it but it only appears in the uploaded site-->
         </footer>
 
+        <script>
+            document.querySelectorAll('nav ul li a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    document.getElementById('burger').checked = false;
+                });
+            });
+        </script>
     </body>
 </html>
