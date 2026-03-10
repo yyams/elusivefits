@@ -128,6 +128,10 @@ nav ul li a:hover {
     max-width: 1000px;
 }
 
+html {
+    background-color: #0a050f; /* fills notch and bottom bar safe areas on iOS */
+}
+
 body {
     background-color: #0a050f;
 }
@@ -380,10 +384,10 @@ h1, h2, h3, h4, h5, h6 {
 .grain {
   pointer-events: none;
   position: fixed;
-  top: 0;
+  top: calc(-1 * env(safe-area-inset-top, 0px));
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
   z-index: 9999;
   background-image: url("../images/noise.png");
   background-repeat: repeat;
@@ -810,7 +814,7 @@ p.footertitle span {
     nav {
         position: fixed;
         top: auto;
-        bottom: 50px;
+        bottom: calc(50px + env(safe-area-inset-bottom));
         left: 50%;
         transform: translateX(-50%);
         width: 360px;
